@@ -1,0 +1,7 @@
+<h1> Répertoire des stars</h1>
+
+{{#if this.res}}
+  cliquez sur une nouvelle lettre : {{#each letter}} {{letter}} {{/each}}
+{{else}}
+  cliquez sur une lettre :  {{#each letter}} <a href=" repertoire/{{this.letter}}"> {{this.letter}}</a> {{/each}}
+{{/if}}
