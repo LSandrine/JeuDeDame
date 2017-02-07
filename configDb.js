@@ -5,14 +5,13 @@
 * la méthode getConnection permet de se connecter à MySQL
 *
 */
-
 var mysql = require('mysql'); // voir https://github.com/felixge/node-mysql/
 
 var pool  = mysql.createPool({
   host     : 'localhost',
   user     : 'bd',
   password : 'bede',
-  database : 'vip',
+  database : 'jeudedames',
   port : "3306"
 });
 
