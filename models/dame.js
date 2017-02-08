@@ -1,5 +1,17 @@
 var db = require('../configDb');
 
+
+//connexion
+module.exports.connexion = function(callback){
+  db.getConnection(function (err, connexion) {
+    if(!err){
+      var sql = "SELECT login FROM USER WHERE :login"//A FAIRE récupérer l'id du gars log
+      console.log(sql);
+      connexion.query(sql, callback);
+      connexion.release();
+    }
+  });
+};
 //contenu du tableau du lobby
 module.exports.lobbytab = function(callback){
   db.getConnection(function (err, connexion) {
@@ -11,6 +23,7 @@ module.exports.lobbytab = function(callback){
     }
   });
 };
+
 //ajout session boutton
 module.exports.lobbybut = function(callback){
   db.getConnection(function (err, connexion) {

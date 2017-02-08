@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 07 Février 2017 à 14:42
+-- Généré le :  Mer 08 Février 2017 à 14:16
 -- Version du serveur :  5.7.11
 -- Version de PHP :  7.0.4
 
@@ -33,6 +33,13 @@ CREATE TABLE `game` (
   `id_winner` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `game`
+--
+
+INSERT INTO `game` (`id_session`, `num_game`, `id_score`, `id_winner`) VALUES
+(1, 1, 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -58,6 +65,14 @@ CREATE TABLE `session` (
   `id_user2` int(6) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `session`
+--
+
+INSERT INTO `session` (`id_session`, `id_user1`, `id_user2`) VALUES
+(1, 1, 2),
+(2, 3, 5);
+
 -- --------------------------------------------------------
 
 --
@@ -66,8 +81,21 @@ CREATE TABLE `session` (
 
 CREATE TABLE `users` (
   `id_user` int(6) UNSIGNED NOT NULL,
-  `login` varchar(15) NOT NULL
+  `login` varchar(15) NOT NULL,
+  `mdp` varchar(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `users`
+--
+
+INSERT INTO `users` (`id_user`, `login`, `mdp`) VALUES
+(1, 'bob', 'bob'),
+(2, 'boby', 'boby'),
+(3, 'bobya', 'bob'),
+(4, 'boboya', 'bob'),
+(5, 'bobyao', 'bob'),
+(6, 'bobyuri', 'bob');
 
 --
 -- Index pour les tables exportées
