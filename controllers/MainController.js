@@ -4,7 +4,6 @@ module.exports.Index = function(request, response){
  response.render('home', response);
 };
 module.exports.Connexion = function(request, response){
-  response.title="Connexion"
-  response.render("ok");
-
+   response.title ="Jeu de dames connexion"
+ response.send('ok');
 };
