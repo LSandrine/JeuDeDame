@@ -1,0 +1,14 @@
+
+----------- CSS --------------------------
+
+body{
+  background-image:("../images/background.jpg");
+}
+
+
+table{
+    border-collapse: collapse;
+}
+td{
+    border: 1px solid black;
+}
