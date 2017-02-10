@@ -34,3 +34,14 @@ module.exports.lobbyre = function(callback){
     }
   });
 };
+//connexion jeu
+module.exports.connexion = function(callback){
+  db.getConnection(function (err, connexion) {
+    if(!err){
+      var sql = "SELECT id_user, login ,mdp login FROM USER "
+      console.log(sql);
+      connexion.query(sql, callback);
+      connexion.release();
+    }
+  });
+};
