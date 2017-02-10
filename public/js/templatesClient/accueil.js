@@ -8,3 +8,16 @@ function connexion() {
 
   $('body').on('click',"#submit",postConnection)
 }
+
+function lobby(){
+  var panel='<h1>Lobby</h1>'+'
+<table>'+'
+	<tr>'+'
+		<td><h3>Partie</h3></td>'+'
+		<td><h3>Adversaire</h3></td>'+'
+	</tr>'+'
+
+	'+'
+</table>';
+
+}
