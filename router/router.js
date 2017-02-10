@@ -5,9 +5,12 @@ module.exports = function(app){
     // Main Routes
 //racine
     app.get('/', HomeController.Index);
-    app.post('/controller/postConnection', HomeController.Connexion);
 // pagepourplustard
+
+
+
   app.get('*', HomeController.Index);
+  app.post('/controller/postConnection', HomeController.Connexion);
   app.post('*', HomeController.Index);
 
 };
