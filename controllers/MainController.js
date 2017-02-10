@@ -3,3 +3,8 @@ module.exports.Index = function(request, response){
    response.title ="Jeu de dames"
  response.render('home', response);
 };
+module.exports.Connexion = function(request, response){
+  response.title="Connexion"
+  response.render("ok");
+
+};

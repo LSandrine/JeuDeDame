@@ -8,3 +8,7 @@ function connexion() {
 
   $('body').on('click',"#submit",postConnection)
 }
+
+function lobby(){
+  var panel='<'
+}

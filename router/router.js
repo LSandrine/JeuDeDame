@@ -8,8 +8,9 @@ module.exports = function(app){
 // pagepourplustard
 
 
-  
+
   app.get('*', HomeController.Index);
+  app.post('/controller/postConnection', HomeController.Connexion);
   app.post('*', HomeController.Index);
 
 };
