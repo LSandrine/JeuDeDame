@@ -45,3 +45,14 @@ module.exports.connexion = function(callback){
     }
   });
 };
+
+module.exports.getNomJoueur = function(callback){
+  db.getNoms(function (err, connexion) {
+    if(!err){
+      var sql = "SELECT u.login as joueur1,u2.login as joueur2, s.id_user1 , s.id_user2 FROM SESSION s JOIN USERS u ON u.id_user = s.id_user1 JOIN USERS u2 ON u2.id_user = s.id_user2; "
+      console.log(sql);
+      connexion.query(sql, callback);
+      connexion.release();
+    }
+  });
+};
