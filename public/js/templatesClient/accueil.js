@@ -14,6 +14,7 @@ function connexion() {
 
 function lobby(){
   var panel='<h1>Lobby</h1>'+
+  '<button id="startPartie">commencer partie</button>'+
   '<table>'+'<tr>'+
     '<td><h3>Partie</h3></td>'+
     '<td><h3>Adversaire</h3></td>'+
