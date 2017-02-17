@@ -1,14 +1,21 @@
 
------------ CSS --------------------------
-
-body{
-  background-image:("../images/background.jpg");
+body  {
+    color: white;
+    background-image: url("/images/background.jpg");
 }
 
-
+img{
+  width:4em;
+  height:4em;
+  margin-bottom:-0.15em;
+}
 table{
-    border-collapse: collapse;
+  background-color: #130404;
 }
-td{
-    border: 1px solid black;
+
+footer{
+  position: fixed;
+  bottom: 0px;
+  right:0px;
+  margin-right: 50px;
 }

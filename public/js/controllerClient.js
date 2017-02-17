@@ -9,5 +9,5 @@ function controllerLobby(){
 
 function afficherPlateau(){
   $('#contenu').html(plateau());
-  $('title').text('Plateau du jeu');
+  //$('title').text('Plateau du jeu');
 }

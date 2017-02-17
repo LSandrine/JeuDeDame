@@ -1,18 +1,16 @@
 function plateau() {
-  var plateau=
-    '<table class="plateau" id="plateau">'+
-  		//
-        '<tr><th>Firstname</th><th>Lastname</th><th>Age</th></tr>' +
-        '<tr><td><img src="../images/caseClair.jpg" style="width:304px;height:228px;"></td><td>Smith</td><td>50</td></tr>' +
-        '<tr><td>Eve</td><td>Jackson</td><td>94</td></tr>' +
-        '<tr><td>John</td><td>Doe</td><td>80</td></tr>' +
-        '<tr><td>Jill</td><td>Smith</td><td>50</td></tr>' +
-        '<tr><td>Eve</td><td>Jackson</td><td>94</td></tr>' +
-        '<tr><td>John</td><td>Doe</td><td>80</td></tr>' +
-        '<tr><td>Jill</td><td>Smith</td><td>50</td></tr>' +
-        '<tr><td>Eve</td><td>Jackson</td><td>94</td></tr>' +
-        '<tr><td>John</td><td>Doe</td><td>80</td></tr>' +
-        '<tr><td>Jill</td><td>Smith</td><td>50</td></tr>' +
-  	'</table>';
+  var plateau='<table class="plateau" id="plateau">';
+  for (i = 0; i < 9; i++){
+    plateau+='<tr>';
+    for (j = 0;j< 9 ; j++){
+      if( (i+j) % 2 == 0){
+        plateau +='<td><img src="../images/caseClair.jpg" id="'+[i,j]+'" class="case"></td>';
+      }else{
+        plateau +='<td><img src="../images/caseSombre.jpg" id="'+[i,j]+'" class="case"></td>';
+      }
+    }
+    plateau+='</tr>';
+  }
+  plateau+= '</table>';
   return plateau;
 }
