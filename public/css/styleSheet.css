@@ -5,17 +5,27 @@ body  {
 }
 
 img{
-  width:4em;
-  height:4em;
+  width:5.5em;
+  height:5.5em;
   margin-bottom:-0.15em;
 }
 table{
   background-color: #130404;
 }
 
+#plateau{
+    margin-left: 30em;
+    margin-top: 0.5em;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #deac26;
+    border-radius: 3px;
+    box-shadow: 0px 0px 100px 50px #000000;
+}
+
 footer{
   position: fixed;
   bottom: 0px;
   right:0px;
-  margin-right: 50px;
+  margin-right: 30px;
 }
