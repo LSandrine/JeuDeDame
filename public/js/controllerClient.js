@@ -1,5 +1,9 @@
 $(document).ready(function(){
-  connexion();
+  var session;
+  session=getSession();
+  console.log(session);
+  if(session.userId)controllerLobby();
+  else connexion();
   $('body').on("click","#startPartie",afficherPlateau);
 });
 function controllerLobby(){

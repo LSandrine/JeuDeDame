@@ -35,10 +35,10 @@ module.exports.lobbyre = function(callback){
   });
 };
 //connexion jeu
-module.exports.connexion = function(callback){
+module.exports.connexion = function(data,callback){
   db.getConnection(function (err, connexion) {
     if(!err){
-      var sql = "SELECT id_user, login ,mdp login FROM USER "
+      var sql = "SELECT id_user FROM USERS WHERE login='"+data.user+"' and mdp='"+data.pwd+"';";
       console.log(sql);
       connexion.query(sql, callback);
       connexion.release();
