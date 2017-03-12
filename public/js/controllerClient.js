@@ -1,10 +1,10 @@
 $(document).ready(function(){
   var session;
   session=getSession();
-  console.log(session);
   if(session.userId)controllerLobby();
   else connexion();
   $('body').on("click","#startPartie",afficherPlateau);
+
 });
 function controllerLobby(){
   $('#contenu').html(lobby());
@@ -13,5 +13,10 @@ function controllerLobby(){
 
 function afficherPlateau(){
   $('#contenu').html(plateau());
-  //$('title').text('Plateau du jeu');
+  $('title').text('Plateau du jeu');
+  $('.pion').draggable();
+  $('.case').droppable();
+}
+function deplacer(){
+
 }

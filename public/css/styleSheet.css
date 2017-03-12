@@ -5,14 +5,24 @@ body  {
 }
 
 img{
-  width:5.5em;
-  height:5.5em;
+  width:5em;
+  height:5em;
   margin-bottom:-0.15em;
 }
 table{
   background-color: #130404;
 }
-
+.clair{
+    background-image: url("/images/caseClair.jpg");
+}
+.fonce{
+    background-image: url("/images/caseSombre.jpg");
+}
+#plateau td{
+  width:5.5em;
+  height:5.5em;
+  margin-bottom:-0.15em;
+}
 #plateau{
     margin-left: 30em;
     margin-top: 0.5em;
