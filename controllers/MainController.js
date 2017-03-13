@@ -1,5 +1,5 @@
 // ////////////////////////////////////////////// A C C U E I L
-var model = require("../models/dame.js");
+var model = require("../models/bd.js");
 module.exports.Index = function(request, response){
    response.title ="Jeu de dames"
  response.render('home', response);
@@ -15,6 +15,7 @@ module.exports.Connexion = function(request, response){
        rep="deny";
        if(result[0]){
          request.session.userId=result[0].id_user;
+         request.session.userName=result[0].name_user;
          console.log(request.session.userId);
          rep="accept";
        }

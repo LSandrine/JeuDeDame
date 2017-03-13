@@ -3,19 +3,30 @@
     <head>
         <meta charset="UTF-8" />
         <script src="/js/jquery.js"></script>
+        <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+        <script src="/js/AjaxClient.js"></script>
         <script src="/js/templatesClient/accueil.js"></script>
         <script src="/js/templatesClient/plateau.js"></script>
-        <script src="/js/AjaxClient.js"></script>
         <script src="/js/controllerClient.js"></script>
+        <script src="/js/chatt.js"></script>
         <link rel="stylesheet" type="text/css" href="/css/styleSheet.css">
         <link rel="icon" type="image/png" href="/images/favicon.png"/>
         <title> {{title}}</title>
     </head>
     <body class="monBody">
         <div id="container">
-            <div id="contenu">
+          <div id="content">
 
+          </div>
+          <div id="contenu">
+            <div class="messagse">
+              <h1>Tchat public</h1>
+              <div id="tchat"></div>
+                <b>Message : </b><input type="text" name="message" id="message" style="width:250px;" />
+                <input id="sendMess" type="button" value="Envoyer" />
             </div>
+          </div>
+
             <footer>
                 © IUT du Limousin DUT Informatique année 2
                 <br />

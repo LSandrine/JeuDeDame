@@ -9,10 +9,10 @@ function connexion() {
   '<tr><td><input type="button" id="submit" value=" Jouer !" /></td>'+
   '<td><input type="button" id="submit" value=" S\'inscrire" /></td></tr></table>'+
   '</form></div>';
-    $('#contenu').html(form);
+    $('#content').html(form);
 
   $('body').on('click',"#submit",postConnection);
-}
+};
 
 function lobby(){
   var panel='<h1>Lobby</h1>'+
@@ -20,6 +20,12 @@ function lobby(){
   '<table>'+'<tr>'+
     '<td><h3>Partie</h3></td>'+
     '<td><h3>Adversaire</h3></td>'+
+    '<div id="adversaire">'+
+    '<table>'+
+    '<tr><th>id</th><th>nom</th><th>statut</th></tr>'+
+    '<tr><td>'+session.userId+'</td><td>'+pseudo+'</td><td>vous</td></tr>'+
+    '</table>'+
+    '</div>'+
   '</tr>'+''+'</table>';
   return panel;
-}
+};

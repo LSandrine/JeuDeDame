@@ -1,22 +1,27 @@
+var socket = io.connect();
+var session;
+var pseudo;
 $(document).ready(function(){
-  var session;
-  session=getSession();
+  updateSession()
   if(session.userId)controllerLobby();
   else connexion();
   $('body').on("click","#startPartie",afficherPlateau);
 
 });
 function controllerLobby(){
-  $('#contenu').html(lobby());
+  $('#content').html(lobby());
   $('title').text('lobby jeu de dame');
-}
+};
 
 function afficherPlateau(){
-  $('#contenu').html(plateau());
+  $('#content').html(plateau());
   $('title').text('Plateau du jeu');
-  $('.pion').draggable();
-  $('.case').droppable();
-}
-function deplacer(){
+  //$('.pion').draggable();
+  //$('.case').droppable();
+};
 
+function updateSession(){
+  session=getSession();
+  if(session.userName)pseudo=session.userName;
+  else pseudo='anonyme';
 }

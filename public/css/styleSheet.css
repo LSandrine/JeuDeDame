@@ -5,8 +5,8 @@ body  {
 }
 
 img{
-  width:5em;
-  height:5em;
+  width:3.5em;
+  height:3.5em;
   margin-bottom:-0.15em;
 }
 table{
@@ -19,8 +19,8 @@ table{
     background-image: url("/images/caseSombre.jpg");
 }
 #plateau td{
-  width:5.5em;
-  height:5.5em;
+  width:3.5em;
+  height:3.5em;
   margin-bottom:-0.15em;
 }
 #plateau{
