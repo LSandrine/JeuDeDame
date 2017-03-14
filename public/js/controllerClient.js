@@ -3,26 +3,14 @@ var session;
 var pseudo;
 $(document).ready(function(){
   updateSession();
-  if(session.userId){
-    controllerLobby();
-  }
+  if(session.userId)lobby();
   else connexion();
-  $('body').on("click","#startPartie",afficherPlateau);
+  $('body').on("click","#startPartie",plateau);
   $('body').on("click",".playWitch",game);
   $('body').on("click","#sendMess",envoiMessage);
+  $('body').on('click',"#submit",postConnection);
 });
-function controllerLobby(){
-  updateSession();
-  $('#content').html(lobby());
-  $('title').text('lobby jeu de dame');
-};
 
-function afficherPlateau(){
-  $('#content').html(plateau());
-  $('title').text('Plateau du jeu');
-  //$('.pion').draggable();
-  //$('.case').droppable();
-};
 
 function updateSession(){
   session=getSession();
@@ -32,9 +20,9 @@ function updateSession(){
 
 function game(){
   proposeGame($(this).attr('id'));
-}
-
+};
+/*
 //marche pas ???????????????????????????
 window.onbeforeunload = function (){
 		alert("On passe");
-}
+}*/

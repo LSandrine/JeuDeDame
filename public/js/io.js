@@ -1,3 +1,23 @@
+//socket listener :
+//-------------------------messages----------------------------//
+
+socket.on('recupererMessages', function (messages) {
+  var html = '';
+  for (var i = 0; i < messages.length; i++)
+    html += '<div class="line"><b>'+messages[i].pseudo+'</b> : '+messages[i].message+'</div>';
+    $('#tchat').html(html);
+});
+socket.on('recupererNouveauMessage', function (message) {
+    $('#tchat').append('<div class="line"><b>'+message.pseudo+'</b> : '+message.message+'</div>');
+});
+function envoiMessage(mess) {
+  var message = $('#message').val();
+  socket.emit('nouveauMessage', { 'pseudo' : pseudo, 'message' : message });
+  $('#tchat').append('<div class="line"><b>'+pseudo+'</b> : '+message+'</div>');
+  $('#message').val('');
+  return false;
+};
+//-------------------------players----------------------------//
 socket.on('recupererPlayers', function (players) {
   var html = '<tr><th>id</th><th>nom</th><th>statut</th></tr>';
   for (var i = 0; i < players.length; i++){
@@ -43,4 +63,20 @@ socket.on('ListOfPlayers', function (players) {
     html += '<tr><th>'+players[i].id+'</th><th>'+players[i].login+'</th><th>'+statut+'</th></tr>';
   }
   $('#player').html(html);
+});
+
+//-------------------------games----------------------------//
+function proposeGame(id) {
+  socket.emit('proposeGame', { 'id' : session.userId, 'login' : session.userName, 'adverse' : id });
+  return false;
+};
+socket.on('demandeGame', function (player) {
+  if(player.adverse==session.userId){
+    if (confirm("acceptez vous une partie avec "+player.login+" ?")) {
+      alert("oui")
+    }
+    else {
+      alert("non")
+    }
+  }
 });

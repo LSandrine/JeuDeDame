@@ -4,7 +4,7 @@ function postConnection() {
           data:$('#formConnection').serialize(),
           success:function(data){
             if(data=='accept'){
-              controllerLobby();
+              lobby();
               envoiPlayer();
               updateSession();
               ListPlayers();
