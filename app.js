@@ -51,17 +51,35 @@ var serveur = http.createServer(app).listen(app.get('port'), function(){
 // Ces variables resteront durant toute la vie du seveur et sont communes pour chaque client (node server.js)
 // Liste des messages de la forme { pseudo : 'Mon pseudo', message : 'Mon message' }
 var messages = [];
+var players = [];
 io = io.listen(serveur);
-
 // Quand une personne se connecte au serveur
 io.sockets.on('connection', function (socket) {
     // On donne la liste des messages (événement créé du côté client)
     socket.emit('recupererMessages', messages);
+    // on envoi la liste des joueurs;
+    socket.emit('recupererPlayers', players);
     // Quand on reçoit un nouveau message
     socket.on('nouveauMessage', function (mess) {
         // On l'ajoute au tableau (variable globale commune à tous les clients connectés au serveur)
         messages.push(mess);
         // On envoie à tout les clients connectés (sauf celui qui a appelé l'événement) le nouveau message
         socket.broadcast.emit('recupererNouveauMessage', mess);
+    });
+    // Quand on reçoit un nouveau joueur
+    socket.on('nouveauPlayer', function (player) {
+        // On l'ajoute au tableau (variable globale commune à tous les clients connectés au serveur)
+        players.push(player);
+        // On envoie à tout les clients connectés (sauf celui qui a appelé l'événement) le nouveau message
+        socket.broadcast.emit('recupererNouveauPlayer', player);
+    });
+    socket.on('ListPlayers', function () {
+        // On envoie tout les joueurs
+        socket.broadcast.emit('ListOfPlayers', players);
+        socket.emit('ListOfPlayers', players);
+    });
+    socket.on('proposeGame', function (player) {
+        // On envoie tout les joueurs
+        socket.broadcast.emit('demandeGame', player);
     });
 });

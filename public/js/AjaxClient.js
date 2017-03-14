@@ -3,10 +3,11 @@ function postConnection() {
           url:'/controller/postConnection',
           data:$('#formConnection').serialize(),
           success:function(data){
-            alert(data);
             if(data=='accept'){
               controllerLobby();
-              updateSession()
+              envoiPlayer();
+              updateSession();
+              ListPlayers();
             };
 
           },

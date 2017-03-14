@@ -15,6 +15,3 @@ function envoiMessage(mess) {
   $('#message').val('');
   return false;
 };
-$(document).ready(function(){
-  $('body').on("click","#sendMess",envoiMessage);
-});
