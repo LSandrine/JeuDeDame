@@ -53,9 +53,10 @@ background-color: black;
 }
 input{
   box-shadow: 2px 2px 20px white;
-  border-color: black;
-  background-color: black;
-  color: white;
+  border-color: white;
+  border-radius: 10px;
+  background-color: #f1f1f1;
+  color: #0e0e0e;
 }
 #sendMess{
   background-color: black;
@@ -82,7 +83,8 @@ footer{
 }
 #connectForm table{
   color:black;
-  font-size: 20px;
+  font-size: 25px;
+  padding: 10px 10px 10px 10px;
   border-radius: 20px;
   background: url("/images/caseClair.jpg");
   box-shadow: 2px 2px 20px white;
