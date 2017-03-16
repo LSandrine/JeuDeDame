@@ -60,12 +60,52 @@ function plateau() {
     plateau+='<tr>';
     for (j = 0;j< 10 ; j++){
       ctn=TabPions[i][j];
-      if( (i+j) % 2 == 0)plateau +='<td class="clair case" id="'+i+'.'+j+'">';
-      else plateau +='<td class="fonce case" id="'+i+'.'+j+'" >';
-      if(ctn == 'n')plateau+='<img src="../images/pionRouge.png" class="pionsNoir pion">';
-      else if(ctn== "b")plateau+='<img src="../images/pionBlanc.png" class="pionsBlanc pion">';
+      if( (i+j) % 2 == 0)plateau +='<td class="drop2" id="'+i+'.'+j+'">';// id.old = ""
+      else plateau +='<td class="drop1" id="'+i+'.'+j+'" >';//"'+i+'.'+j+'"
+      if(ctn == 'n')plateau+='<img src="../images/pionRouge.png" class="drag">';//class.old =pionsNoir
+      else if(ctn== "b")plateau+='<img src="../images/pionBlanc.png" class="drag">';//class.old =pionsBlanc
       plateau+='</td>';
     }plateau+='</tr>';
   }plateau+= '</table>';
   $('#content').html(plateau);
+  Deplacement();
+};
+
+
+/* droppable*/
+function Deplacement(){
+  alert('je passe dans deplacement');
+  $('.drag').draggable({
+
+      containment: '#plateau',
+      stack: '#plateau',
+      cursor: 'move',
+      revert: true
+    } );
+
+
+          alert('je passe dans draggable');
+
+  $(".drop1").droppable({
+
+      drop : finDeplacement// une fois dropper va à la fonction finDeplacement
+  });
+  $(".drop2").droppable({
+
+      drop : finDeplacement// une fois dropper va à la fonction finDeplacement
+  });
+
+      alert('je passe dans droppable');
+
 }
+
+function finDeplacement(){
+  alert('je passe dans findeplacement');
+  //ui.draggable.addClass('correct');
+  //ui.draggable.draggable('disable');
+  $(this).droppable('disable');
+  //ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
+  $(this).draggable( 'option', 'revert', false );
+  alert('Action terminée !');
+}
+/**/

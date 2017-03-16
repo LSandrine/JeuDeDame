@@ -5,10 +5,10 @@ body  {
 }
 
 
-.clair{
+.drop2{
     background-image: url("/images/caseClair.jpg");
 }
-.fonce{
+.drop1{
     background-image: url("/images/caseSombre.jpg");
 }
 #plateau td{
