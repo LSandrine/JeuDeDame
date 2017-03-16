@@ -44,9 +44,32 @@ img{
   overflow:hidden;
   overflow-y:scroll;
   background-color: black;
+  box-shadow: 2px 2px 20px white;
+}
+.envoie{
+box-shadow: 2px 2px 20px white;
+border-color: black;
+background-color: black;
+}
+input{
+  box-shadow: 2px 2px 20px white;
+  border-color: black;
+  background-color: black;
+  color: white;
+}
+#sendMess{
+  background-color: black;
+  color: white;
+  border-color: black;
+}
+#sendMess:hover , #submit:hover{
+  background-color:grey;
 }
 #message{
   width: 330px;
+  background-color: black;
+  border-color: black;
+    color: white;
 }
 footer{
   position: fixed;
@@ -59,7 +82,7 @@ footer{
 }
 #connectForm table{
   color:black;
-  font-size: 30px;
+  font-size: 20px;
   border-radius: 20px;
   background: url("/images/caseClair.jpg");
   box-shadow: 2px 2px 20px white;
@@ -67,14 +90,14 @@ footer{
 }
 #connectForm .champs{
   width: 300px;
-  height: 32px;
-  font-size: 30px;
+  height: 22px;
+  font-size: 20px;
 }
 #connectForm td{
-  padding: 10px;
+  padding: 5px;
 }
 #tittleConnexion h2{
-  padding: 20px;
+  padding: 10px;
 }
 #tForm{
   padding: 20px;

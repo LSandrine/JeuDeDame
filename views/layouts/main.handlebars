@@ -3,11 +3,9 @@
     <head>
         <meta charset="UTF-8" />
         <script src="/js/jquery.js"></script>
-        <script type="text/javascript" src="/socket.io/socket.io.js"></script>
         <script src="/js/AjaxClient.js"></script>
         <script src="/js/template.js"></script>
         <script src="/js/controllerClient.js"></script>
-        <script src="/js/io.js"></script>
         <link rel="stylesheet" type="text/css" href="/css/styleSheet.css">
         <link rel="icon" type="image/png" href="/images/favicon.png"/>
         <title> {{title}}</title>
@@ -22,10 +20,10 @@
               <h1>Tchat public</h1>
               <div id="tchat"></div>
               <br/>
-              <div class="envoie">
+              <form class="envoie" id="messGlobal">
                 <input type="text" name="message" id="message" placeholder="Message" />
                 <input id="sendMess" type="button" value="Envoyer" />
-              </div>
+              </form>
             </div>
           </div>
 

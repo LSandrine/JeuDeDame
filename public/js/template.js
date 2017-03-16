@@ -4,8 +4,7 @@ function connexion() {
   '<h2>Merci de bien vouloir vous connecter ou inscrire :</h2><br/></div>'+
   '<table><tr><td>Nom d\'utilisateur : </td><td><input type="text" name="username" id="username" class="champs" /></td></tr>'+
   '<tr><td>Mot de passe : </td><td><input type="password" name="password" id="password" class="champs"/></td></tr>'+
-  '<tr><td><input type="button" id="submit" value=" Jouer !" /></td>'+
-  '<td><input type="button" id="submit" value=" S\'inscrire" /></td></tr></table>'+
+  '<tr><td></td><td><input type="button" id="submit" value=" Jouer !" /><span>         </span><input type="button" id="submit" value=" S\'inscrire" /></td></tr></table>'+
   '</form></div>';
     $('#content').html(form);
 };
@@ -22,6 +21,26 @@ function lobby(){
     '</table></div>';
   $('#content').html(panel);
 };
+
+function getMessages() {
+  messages = document.getElementById('tchat');
+  messages.scrollTop = messages.scrollHeight;
+}
+function messagesListVue(messages){
+  var html = '';
+  for (var i = 0; i < messages.length; i++)
+    html += '<div class="line">'+messages[i]+'</div>';
+    $('#tchat').html(html);
+}
+function listDePlayers(players){
+  var html = '<tr><th>id</th><th>nom</th><th>statut</th></tr>';
+  for (var i = 0; i < players.length; i++){
+    var statut='<button class="playWitch" id="'+players[i].id+'">Proposer jouer</button>';
+    if(players[i].statut!='disp')statut=players[i].statut;
+    if(players[i].id==session.userId)statut="vous";
+    html += '<tr><th>'+players[i].id+'</th><th>'+players[i].login+'</th><th>'+statut+'</th></tr>';
+  }$('#player').html(html);
+}
 
 function plateau() {
   $('title').text('Plateau du jeu');
