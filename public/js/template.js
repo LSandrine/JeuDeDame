@@ -42,6 +42,11 @@ function listDePlayers(players){
   }$('#player').html(html);
 }
 
+function init(){
+
+}
+
+
 function plateau() {
   $('title').text('Plateau du jeu');
   var TabPions = [[0,'b',0,'b',0,'b',0,'b',0,'b'],
@@ -62,13 +67,14 @@ function plateau() {
       ctn=TabPions[i][j];
       if( (i+j) % 2 == 0)plateau +='<td class="drop2" id="'+i+'.'+j+'">';// id.old = ""
       else plateau +='<td class="drop1" id="'+i+'.'+j+'" >';//"'+i+'.'+j+'"
-      if(ctn == 'n')plateau+='<img src="../images/pionRouge.png" class="drag">';//class.old =pionsNoir
-      else if(ctn== "b")plateau+='<img src="../images/pionBlanc.png" class="drag">';//class.old =pionsBlanc
+      if(ctn == 'n')plateau+='<img src="../images/pionRouge.png" class="drag" id= "'+i+'.'+j+'">';//class.old =pionsNoir
+      else if(ctn== "b")plateau+='<img src="../images/pionBlanc.png" class="drag" id="'+i+'.'+j+'">';//class.old =pionsBlanc
       plateau+='</td>';
     }plateau+='</tr>';
   }plateau+= '</table>';
   $('#content').html(plateau);
   Deplacement();
+
 };
 
 
@@ -76,37 +82,48 @@ function plateau() {
 function Deplacement(){
   alert('je passe dans deplacement');
   $('.drag').draggable({
-
       containment: '.drop',
       stack: '.drop',
       cursor: 'move',
       revert: true
     } );
 
-
           alert('je passe dans draggable');
 
   $(".drop1").droppable({
 
-      drop : finDeplacement// une fois dropper va à la fonction finDeplacement
+      over:function (event, ui){
+        var depart = ui.draggable.attr('id');
+        var arrive = $(this).attr('id');
+        var Iarrive= arrive.split('.');
+        console.log(Iarrive[1]+","+Iarrive[0]);
+        var Idepart= depart.split('.');
+        console.log(Idepart[1]+","+Idepart[0]); ////////////////////////////////////////A CONTINUER
+        //return bool
+      },
+      drop : finDeplacement()
   });
-  /*
-  $(".drop2").droppable({
-
-      drop : finDeplacement// une fois dropper va à la fonction finDeplacement
-  });*/
 
       alert('je passe dans droppable');
 
-}
+};
+
+
+
+
 
 function finDeplacement(){
+  console.log("arrivé");
+
   alert('je passe dans findeplacement');
-  //ui.draggable.addClass('correct');
-  //ui.draggable.draggable('disable');
-  $(this).droppable('disable');
-  //ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
-  $(this).draggable( 'option', 'revert', false );
+
+  var idPapa = $(this).attr('id');
+
+  //$(this).append("<img src=\"../images/pionRouge.png\" class=\"drag\" id= \"+"idPapa"+\">")
   alert('Action terminée !');
-}
+  var caseDeb = sessionStorage.getItem("casedepart");
+
+};
+
+
 /**/
