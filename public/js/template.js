@@ -77,8 +77,8 @@ function Deplacement(){
   alert('je passe dans deplacement');
   $('.drag').draggable({
 
-      containment: '#plateau',
-      stack: '#plateau',
+      containment: '.drop',
+      stack: '.drop',
       cursor: 'move',
       revert: true
     } );
@@ -90,10 +90,11 @@ function Deplacement(){
 
       drop : finDeplacement// une fois dropper va à la fonction finDeplacement
   });
+  /*
   $(".drop2").droppable({
 
       drop : finDeplacement// une fois dropper va à la fonction finDeplacement
-  });
+  });*/
 
       alert('je passe dans droppable');
 
