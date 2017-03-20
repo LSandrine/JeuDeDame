@@ -1,11 +1,19 @@
 //socket= io.connect();
 var session;
 var pseudo;
+var partieEnCours;
 $(document).ready(function(){
   updateSession();
-  setInterval(getMessagesList, 100);
-  setInterval(getPlayers, 100);
-  if(session.userId)lobby();
+  getGames();
+  setInterval(getMessagesList,1000);
+  setInterval(getPlayers, 300);
+  setInterval(SearchPlay, 400);
+  if(session.userId){
+    if(session.play==1)plateau();
+    else{
+      lobby();
+    }
+  }
   else connexion();
   $('body').on("click","#startPartie",plateau);
   $('body').on("click",".playWitch",game);
@@ -19,9 +27,12 @@ function updateSession(){
   if(session.userName)pseudo=session.userName;
   else pseudo='anonyme';
 }
+function SearchPlay(){
+  if(session.play!=1)getGames();
+}
 
 function game(){
-  //proposeGame($(this).attr('id'));
+  proposerUnGame($(this).attr('id'));
 };
 /*
 //marche pas ???????????????????????????

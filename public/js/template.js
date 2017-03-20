@@ -12,7 +12,7 @@ function connexion() {
 function lobby(){
   updateSession();
   $('title').text('lobby jeu de dame');
-  var panel='<h1>Lobby</h1>'+
+  var panel='<button>Déconnexion</button><h1>Lobby</h1>'+
   '<button id="startPartie">commencer partie</button>'+
   '<h3>Partie</h3>'+
   '<h4>Adversaire</h4>'+
@@ -21,6 +21,7 @@ function lobby(){
     '</table></div>';
   $('#content').html(panel);
 };
+
 
 function getMessages() {
   messages = document.getElementById('tchat');
@@ -36,30 +37,16 @@ function listDePlayers(players){
   var html = '<tr><th>id</th><th>nom</th><th>statut</th></tr>';
   for (var i = 0; i < players.length; i++){
     var statut='<button class="playWitch" id="'+players[i].id+'">Proposer jouer</button>';
-    if(players[i].statut!='disp')statut=players[i].statut;
+    if(players[i].play==1)statut="partie en cours";
     if(players[i].id==session.userId)statut="vous";
     html += '<tr><th>'+players[i].id+'</th><th>'+players[i].login+'</th><th>'+statut+'</th></tr>';
   }$('#player').html(html);
 }
 
-function init(){
-
-}
-
-
 function plateau() {
   $('title').text('Plateau du jeu');
-  var TabPions = [[0,'b',0,'b',0,'b',0,'b',0,'b'],
-                  ['b',0,'b',0,'b',0,'b',0,'b',0],
-                  [0,'b',0,'b',0,'b',0,'b',0,'b'],
-                  ['b',0,'b',0,'b',0,'b',0,'b',0],
-                  [0,0,0,0,0,0,0,0,0,0],
-                  [0,0,0,0,0,0,0,0,0,0],
-                  [0,'n',0,'n',0,'n',0,'n',0,'n'],
-                  ['n',0,'n',0,'n',0,'n',0,'n',0],
-                  [0,'n',0,'n',0,'n',0,'n',0,'n'],
-                  ['n',0,'n',0,'n',0,'n',0,'n',0]];
-
+  console.log(partieEnCours);
+  var TabPions = partieEnCours.plateau;
   var plateau='<table class="plateau" id="plateau">';
   for (i = 0; i < 10; i++){
     plateau+='<tr>';
@@ -67,15 +54,15 @@ function plateau() {
       ctn=TabPions[i][j];
       if( (i+j) % 2 == 0)plateau +='<td class="drop2" id="'+i+'.'+j+'">';// id.old = ""
       else plateau +='<td class="drop1" id="'+i+'.'+j+'" >';//"'+i+'.'+j+'"
-      if(ctn == 'n')plateau+='<img src="../images/pionRouge.png" class="drag" id= "'+i+'.'+j+'">';//class.old =pionsNoir
-      else if(ctn== "b")plateau+='<img src="../images/pionBlanc.png" class="drag" id="'+i+'.'+j+'">';//class.old =pionsBlanc
+      if(ctn == 'n')plateau+='<img src="../images/pionRouge.png" class="drag">';//class.old =pionsNoir
+      else if(ctn== "b")plateau+='<img src="../images/pionBlanc.png" class="drag">';//class.old =pionsBlanc
       plateau+='</td>';
     }plateau+='</tr>';
   }plateau+= '</table>';
   $('#content').html(plateau);
   Deplacement();
-
 };
+
 
 
 /* droppable*/
