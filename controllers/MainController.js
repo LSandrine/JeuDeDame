@@ -62,8 +62,8 @@ module.exports.AcceptGame = function(request, response){
                   ['b',0,'b',0,'b',0,'b',0,'b',0],
                   [0,'b',0,'b',0,'b',0,'b',0,'b'],
                   ['b',0,'b',0,'b',0,'b',0,'b',0],
-                  [0,0,0,0,0,0,0,0,0,0],
-                  [0,0,0,0,0,0,0,0,0,0],
+                  [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                  [ 0, 0,'b', 0, 0, 0, 0,'b',0,0],
                   [0,'n',0,'n',0,'n',0,'n',0,'n'],
                   ['n',0,'n',0,'n',0,'n',0,'n',0],
                   [0,'n',0,'n',0,'n',0,'n',0,'n'],
@@ -77,20 +77,18 @@ module.exports.AcceptGame = function(request, response){
 module.exports.SetPlay = function(request, response){
   request.session.play=request.body.play;
   response.send('playSet');
-  for(i=0;i<players.length;i++){
-    if(players[i].id==request.session.id){
-      players[i].play=1;
-    }
-  }
+  for(i=0;i<players.length;i++)if(players[i].id==request.session.id)players[i].play=1;
 };
 module.exports.SupprimerUnGame = function(request, response){
   var z=-1;
   for(i=0;i<demandesParties.length;i++){
-    if(demandesParties[i].toString()==request.body.toString()){
-      z=i;
-    }
+    if(demandesParties[i].toString()==request.body.toString())z=i;
   }
   if(z!=-1)demandesParties.splice(z,1);
   console.log(demandesParties);
   response.send('delete');
+};
+module.exports.AppliquerDeplacement = function(request, response){
+    console.log(request.body);
+    response.send(request.body);
 };

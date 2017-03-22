@@ -12,7 +12,7 @@ module.exports = function(app){
     app.post('/controller/setPlay', MainController.SetPlay);
     app.post('/controller/supprimerUnGame', MainController.SupprimerUnGame);
     app.post('/controller/envoiDeMessage', MainController.EnvoiDeMessage);
-
+    app.post('/controller/appliquerDeplacement',MainController.AppliquerDeplacement)
 
     app.post('*', MainController.Index);
     app.get('*', MainController.Index);

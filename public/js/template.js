@@ -55,7 +55,7 @@ function plateau() {
       if( (i+j) % 2 == 0)plateau +='<td class="drop2" id="'+i+'.'+j+'">';// id.old = ""
       else plateau +='<td class="drop1" id="'+i+'.'+j+'" >';//"'+i+'.'+j+'"
       if(ctn == 'n')plateau+='<img src="../images/pionRouge.png" class="drag">';//class.old =pionsNoir
-      else if(ctn== "b")plateau+='<img src="../images/pionBlanc.png" class="drag">';//class.old =pionsBlanc
+      else if(ctn== "b")plateau+='<img src="../images/pionBlanc.png" class="blanc">';//class.old =pionsBlanc
       plateau+='</td>';
     }plateau+='</tr>';
   }plateau+= '</table>';
@@ -67,50 +67,89 @@ function plateau() {
 
 /* droppable*/
 function Deplacement(){
-  alert('je passe dans deplacement');
   $('.drag').draggable({
       containment: '.drop',
       stack: '.drop',
       cursor: 'move',
-      revert: true
+      revert: "invalid"
     } );
 
-          alert('je passe dans draggable');
 
   $(".drop1").droppable({
 
-      over:function (event, ui){
-        var depart = ui.draggable.attr('id');
-        var arrive = $(this).attr('id');
-        var Iarrive= arrive.split('.');
-        console.log(Iarrive[1]+","+Iarrive[0]);
-        var Idepart= depart.split('.');
-        console.log(Idepart[1]+","+Idepart[0]); ////////////////////////////////////////A CONTINUER
-        //return bool
-      },
-      drop : finDeplacement()
+
+      drop : function (event, ui){
+          var depart = ui.draggable["0"].parentNode.id;
+          console.log(ui);
+          var arrive = $(this).attr('id');
+          var Iarrive= arrive.split('.');
+          console.log(Iarrive[1]+","+Iarrive[0]);
+          var Idepart= depart.split('.');
+          console.log(Idepart[1]+","+Idepart[0]);
+          var idAll = [];
+          idAll.push(Iarrive[1]);
+          idAll.push(Iarrive[0]);
+          idAll.push(Idepart[1]);
+          idAll.push(Idepart[0]);
+          console.log(idAll);
+          if(caseLibre(arrive)){
+            var x=Idepart[0]-Iarrive[0];
+            var y=Idepart[1]-Iarrive[1];
+            if(y<0)y=-y;
+            if(y==1 && x==1) {
+              deplacePion(arrive,depart);
+            }else if(y==2 && x==2){
+              mangePion(arrive,depart,idAll);
+            }else Revert(depart,arrive);
+          }else Revert(depart,arrive);
+        },
   });
-
-      alert('je passe dans droppable');
-
 };
 
 
 
+function deplacePion(arrive,depart, idAll){
+  tableDeplacement = [];
+  document.getElementById(depart).innerHTML='';
+  document.getElementById(arrive).innerHTML="<img src=\"../images/pionRouge.png\" class=\"drag\">";
+  AppliquerDeplacement([depart, arrive]);
+}
+function Revert(depart,arrive){
+  document.getElementById(depart).innerHTML="<img src=\"../images/pionRouge.png\" class=\"drag\">";
+}
 
 
-function finDeplacement(){
-  console.log("arrivé");
+function caseLibre(arrive){
+  if(document.getElementById(arrive).innerHTML==""){
+    console.log('libre au max');
+    return true;
+  }else return false;
+}
 
-  alert('je passe dans findeplacement');
+function mangePion(arrive,depart,idAll){
+  var x = idAll[1]-(-1);
+  console.log(x);
+  var y;
+  if(idAll[2]-idAll[0]<0){
+    y = idAll[2]-(-1);
+  }else{
+    y = idAll[2]-1;
+  }
+  var victime = x+"."+y;
+  console.log(victime);
+  if (document.getElementById(victime).innerHTML== ""){
+    console.log("pas de victime");
+    Revert(depart,arrive);
+  }else{
+    if(document.getElementById(victime).firstChild.className=="blanc"){
+      console.log("victime");
+      document.getElementById(victime).innerHTML='';
+      document.getElementById(depart).innerHTML='';
+      document.getElementById(arrive).innerHTML="<img src=\"../images/pionRouge.png\" class=\"drag\">";
+      AppliquerDeplacement([depart,arrive,victime]);
+    }else{
+      Revert(depart,arrive);
+    }
+  }
 
-  var idPapa = $(this).attr('id');
-
-  //$(this).append("<img src=\"../images/pionRouge.png\" class=\"drag\" id= \"+"idPapa"+\">")
-  alert('Action terminée !');
-  var caseDeb = sessionStorage.getItem("casedepart");
-
-};
-
-
-/**/
+}
