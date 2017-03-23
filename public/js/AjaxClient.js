@@ -170,12 +170,24 @@ function setPlay(){
 function AppliquerDeplacement(dep){
   if(dep.lenght==2)var dataDonnees="depart="+dep[0]+"&arrive="+dep[1];
   else var dataDonnees="depart="+dep[0]+"&arrive="+dep[1]+"&victime="+dep[2];
-  console.log(dataDonnees);
   $.ajax({
           url:"/controller/appliquerDeplacement",
           data:dataDonnees,
           success:function(data){
-            console.log(data);
+            getGames();
+          },
+          type:"post",
+          error:function(data){alert("error");}
+        });
+};
+function  passerTour(){
+  var dataDonnees="tour="+partieEnCours.tour;
+  $.ajax({
+          url:"/controller/passerTour",
+          data:dataDonnees,
+          success:function(data){
+          console.log(data);
+          getGames();
           },
           type:"post",
           error:function(data){alert("error");}
