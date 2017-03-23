@@ -173,7 +173,7 @@ function Deplacement2(){
             mangePion(arrive,depart,idAll);
           }else Revert(depart,arrive);
         }else Revert(depart,arrive);
-      }
+      }else Revert(depart,arrive);
     },
   });
 };
